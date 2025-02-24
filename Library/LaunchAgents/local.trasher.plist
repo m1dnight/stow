@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+        <dict>
+                <key>Label</key>
+                <string>local.trasher</string>
+                <key>ProgramArguments</key>
+                <array>
+                        <string>/bin/sh</string>
+                        <string>-c</string>
+                        <string>/Users/christophe/bin/trasher/take_out_trash.sh</string>
+                </array>
+
+                <!-- <key>StartCalendarInterval</key>
+                <dict>
+                        <key>Day</key>
+                        <integer>1</integer>
+                </dict> -->
+
+                <key>StartInterval</key>
+                <integer>60</integer>
+                <key>StandardErrorPath</key>
+                <string>/Users/christophe/bin/trasher/trasher.log</string>
+
+                <key>StandardOutPath</key>
+                <string>/Users/christophe/bin/trasher/trasher.log</string>
+
+        </dict>
+</plist>

@@ -1,0 +1,20 @@
+#!/bin/bash
+
+export PATH=$PATH:"$HOME/.local/bin"
+export PATH=$PATH:"$HOME/.development/flutter/bin"
+export PATH="$PATH":"$HOME/.pub-cache/bin"
+
+# gnu sed
+export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
+
+# flutter
+export PATH="$HOME/development/flutter/bin":$PATH
+
+# Windsurf
+export PATH="/Users/christophe/.codeium/windsurf/bin:$PATH"
+
+# lmstudio
+export PATH="$PATH:/Users/christophe/.lmstudio/bin"
+
+# asdf
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
