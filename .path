@@ -11,10 +11,13 @@ export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
 export PATH="$HOME/development/flutter/bin":$PATH
 
 # Windsurf
-export PATH="/Users/christophe/.codeium/windsurf/bin:$PATH"
+export PATH="$HOME/.codeium/windsurf/bin:$PATH"
 
 # lmstudio
 export PATH="$PATH:/Users/christophe/.lmstudio/bin"
 
 # asdf
 export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+
+# doom emacs
+export PATH="$HOME/.config/emacs/bin:$PATH"
