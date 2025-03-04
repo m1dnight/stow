@@ -40,7 +40,6 @@ if [[ -f "${HOME}/.cargo/env" ]]; then
 	. "$HOME/.cargo/env"
 fi
 
-
 # atuin
 if [[ -f "$HOME/.atuin/bin/env" ]]; then
 	# shellcheck source=/dev/null

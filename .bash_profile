@@ -1,2 +1,1 @@
-
-. "$HOME/.atuin/bin/env"
+[[ -r ~/.bashrc ]] && . ~/.bashrc
