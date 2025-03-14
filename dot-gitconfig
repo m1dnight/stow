@@ -86,6 +86,8 @@
 
 	k = !gitk --all . & disown
 
+	# create a backup branch of the current branch
+	backup = !git branch --copy $(git branch --show-current).backup
 [init]
 	defaultBranch = main
 
