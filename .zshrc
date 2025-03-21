@@ -14,6 +14,7 @@ for file in ~/.{aliases,functions,dockerfunc,extra,exports,path}; do
 done
 unset file
 
+export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 ################################################################################
 
 autoload -U colors && colors
