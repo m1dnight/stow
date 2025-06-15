@@ -21,3 +21,6 @@ export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 
 # doom emacs
 export PATH="$HOME/.config/emacs/bin:$PATH"
+
+# global npm packages
+export PATH="/Users/christophe/.asdf/installs/nodejs/22.12.0/bin:$PATH"

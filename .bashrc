@@ -8,3 +8,4 @@ for file in ~/.{aliases,functions,dockerfunc,extra,exports,path}; do
     fi
 done
 unset file
+. "$HOME/.cargo/env"
