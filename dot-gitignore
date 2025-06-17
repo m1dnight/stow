@@ -3,3 +3,5 @@
 .fonts/*/*/*/.uuid
 .DS_Store
 CLAUDE.md
+.elixir_ls/
+.idea/
