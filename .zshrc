@@ -19,7 +19,7 @@ export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
 autoload -U colors && colors
 autoload -Uz vcs_info
-precmd() { vcs_info }
+precmd() { print "" ; vcs_info }
 
 ################################################################################
 # vcs_info configuration
