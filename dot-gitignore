@@ -6,3 +6,11 @@ CLAUDE.md
 .elixir_ls/
 .idea/
 .lexical/
+
+node_modules
+venv
+.venv
+target
+
+.env.secret
+.claude
