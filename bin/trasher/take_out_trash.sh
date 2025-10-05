@@ -3,6 +3,7 @@ find ~/Downloads \
     -mtime +7 \
     -maxdepth 1 \
     -mindepth 1 \
+    -and -not -name "*.pdf" \
     -exec ~/bin/trasher/trash {} \;
 
 find ~/Desktop \
@@ -12,9 +13,9 @@ find ~/Desktop \
     -and -not -name "fastlane-access-key.json" \
     -and -not -name "apple-auth-admin.p8" \
     -and -not -name "apple-auth.p8" \
+    -and -not -name "*.pdf" \
     -maxdepth 1 \
     -mindepth 1 \
     -exec ~/bin/trasher/trash {} \;
 
 echo "Trasher ran at $(date)"
- 
