@@ -4,3 +4,5 @@
 
 Makefile
 \.git
+#\.gitconfig-mac
+#\.gitconfig-linux
