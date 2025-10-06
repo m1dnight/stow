@@ -25,9 +25,12 @@ export PATH="$HOME/.config/emacs/bin:$PATH"
 # global npm packages
 export PATH="/Users/christophe/.asdf/installs/nodejs/22.12.0/bin:$PATH"
 
-# foundry 
+# foundry
 export PATH="$PATH:/Users/christophe/.foundry/bin"
 
-# go 
+# go
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$HOME/go/bin:$PATH
+
+# risc0
+export PATH="$PATH:$HOME/.risc0/bin"
