@@ -4,6 +4,8 @@ find ~/Downloads \
     -maxdepth 1 \
     -mindepth 1 \
     -and -not -name "*.pdf" \
+    -and -not -name "*.jpg" \
+    -and -not -name "*.png" \
     -exec ~/bin/trasher/trash {} \;
 
 find ~/Desktop \
