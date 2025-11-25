@@ -19,3 +19,9 @@ function skim() {
         --preview-window "+{2}-/2" \
         --bind 'ctrl-y:execute-silent(code --goto {1}:{2})+abort'
 }
+
+function reset_git() {
+    git submodule foreach --recursive git clean -xfd
+    git submodule foreach --recursive git reset --hard
+    git submodule update --init --recursive
+}
