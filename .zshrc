@@ -137,5 +137,3 @@ setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 . "$HOME/.atuin/bin/env"
 
 eval "$(atuin init zsh)"
-
-export PATH="$PATH:/Users/christophe/.risc0/bin"
