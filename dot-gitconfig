@@ -96,7 +96,7 @@
 
 [diff]
 	wsErrorHighlight = all
-	tool = difft
+	tool = kdiff3
 
 [gpg]
 	format = ssh
