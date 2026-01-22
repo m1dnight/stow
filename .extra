@@ -56,7 +56,7 @@ fi
 # mise
 if [[ -f "$HOME/.local/bin/mise" ]]; then
 	# shellcheck source=/dev/null
-	eval $($HOME/.local/bin/mise activate bash)
+	eval "$(~/.local/bin/mise activate bash)"
 fi
 
 # kubectl if exists
