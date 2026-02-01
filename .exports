@@ -30,3 +30,5 @@ export CARGO_BUILD_BUILD_DIR=$HOME/.cache/cargo/target
 
 # if the file exists, set it.
 export HOMEBREW_GITHUB_API_TOKEN=$(cat $HOME/.secrets/brew_gh_token)
+# do not do autoupdate on brew
+export HOMEBREW_NO_AUTO_UPDATE=1
