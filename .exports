@@ -25,6 +25,8 @@ export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
-# Put all compiler output in local homedir instead of in projects 
-CARGO_BUILD_BUILD_DIR=$HOME/.cache/cargo/target
+# Put all compiler output in local homedir instead of in projects
+export CARGO_BUILD_BUILD_DIR=$HOME/.cache/cargo/target
 
+# if the file exists, set it.
+export HOMEBREW_GITHUB_API_TOKEN=$(cat $HOME/.secrets/brew_gh_token)
