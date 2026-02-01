@@ -2,17 +2,7 @@
 #  Used for setting user's interactive shell configuration and executing
 # commands, will be read when starting as an interactive shell.
 
-################################################################################
-# import all files from dotfiles
-for file in ~/.{aliases,functions,dockerfunc,extra,exports,path}; do
-	if [[ -r "$file" ]] && [[ -f "$file" ]]; then
-		# shellcheck source=/dev/null
-		source "$file"
-	else
-        echo "$file not found"
-    fi
-done
-unset file
+
 
 export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 ################################################################################
@@ -133,3 +123,15 @@ setopt HIST_FIND_NO_DUPS         # Do not display a line previously found.
 setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording entry.
 setopt HIST_VERIFY               # Don't execute immediately upon history expansion.
 setopt HIST_BEEP                 # Beep when accessing nonexistent history.
+
+################################################################################
+# import all files from dotfiles
+for file in ~/.{aliases,functions,dockerfunc,extra,exports,path}; do
+	if [[ -r "$file" ]] && [[ -f "$file" ]]; then
+		# shellcheck source=/dev/null
+		source "$file"
+	else
+        echo "$file not found"
+    fi
+done
+unset file
