@@ -24,3 +24,7 @@ function reset_git() {
     git submodule deinit --all -f
     git submodule update --init --recursive
 }
+
+function pubip() {
+    curl https://ipinfo.io/ip
+}
