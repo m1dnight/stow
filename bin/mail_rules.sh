@@ -5,7 +5,7 @@ for account in loomy gmail; do
 
   page=0
   while true; do
-    json=$(himalaya envelope list --account $account --output json --page-size 10000 --page $page) || break
+    json=$(himalaya envelope list --account $account --output json --page-size 100 --page $page) || break
 
     echo "Processing page $page for $account..."
 
@@ -80,10 +80,10 @@ for account in loomy gmail; do
         .from.name == "Welcome to the Jungle" or
         .from.name == "Elixir Programming Languages Forum" or
         .from.name == "Wellfound" or
-        (.from.name // "" | startswith("The Philips project role"))
-        (.from.name // "" | contains("Testaankoop"))
-        (.from.name // "" | contains("Helan"))
-        (.from.name // "" | contains("Todoist"))
+        (.from.name // "" | startswith("The Philips project role")) or
+        (.from.name // "" | contains("Testaankoop")) or
+        (.from.name // "" | contains("Helan")) or
+        (.from.name // "" | contains("Todoist")) or
         (.from.name // "" | contains("EasyEDA"))
       )
     ]' \
