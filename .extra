@@ -55,8 +55,13 @@ fi
 
 # mise
 if [[ -f "$HOME/.local/bin/mise" ]]; then
-	# shellcheck source=/dev/null
-	eval "$(~/.local/bin/mise activate bash)"
+	if [ -n "$BASH_VERSION" ]; then
+		# shellcheck source=/dev/null
+		eval "$(~/.local/bin/mise activate bash)"
+	elif [ -n "$ZSH_VERSION" ]; then
+		# shellcheck source=/dev/null
+		eval "$(~/.local/bin/mise activate zsh)"
+	fi
 fi
 
 # kubectl if exists
