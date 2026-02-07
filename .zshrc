@@ -134,7 +134,9 @@ for file in ~/.{aliases,functions,dockerfunc,extra,exports,path}; do
         echo "$file not found"
     fi
 done
-unset file# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+unset file
+
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
 fpath=(/Users/christophe/.docker/completions $fpath)
 autoload -Uz compinit
 compinit
