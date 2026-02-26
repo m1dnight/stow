@@ -108,7 +108,7 @@
 	xfuncname = ^.*def.+do$
 
 [rerere]
-	enabled = true
+	enabled = false
 
 [merge]
 	# conflictStyle = diff3
