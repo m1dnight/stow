@@ -38,3 +38,11 @@ function d() {
         *) echo "Unknown command: d $1"; return 1 ;;
     esac
 }
+
+function gh_cancel_queued() {
+    gh run list --status queued --json databaseId --jq '.[].databaseId' | xargs -I {} gh run cancel {}
+}
+
+function gh_cancel_in_progress() {
+    gh run list --status in_progress --json databaseId --jq '.[].databaseId' | xargs -I {} gh run cancel {}
+}
