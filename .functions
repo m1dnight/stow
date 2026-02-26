@@ -28,3 +28,13 @@ function reset_git() {
 function pubip() {
     curl https://ipinfo.io/ip
 }
+
+# docker functions
+function d() {
+    case "$1" in
+        ps) docker ps -a ;;
+        rmall) docker ps -aq | xargs -n1 docker rm -f ;;
+        vrmall) docker volume ls -q | xargs -n1 docker volume rm -f ;;
+        *) echo "Unknown command: d $1"; return 1 ;;
+    esac
+}
