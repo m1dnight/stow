@@ -95,13 +95,13 @@ add-zsh-hook precmd vcs_info
 # PROMPT='%{$bg[cyan]%}%{$fg[white]%}%n%{$reset_color%}@%{$fg[red]%}%m %{$fg[white]%}%~ %{$reset_color%} %F{magenta}${vcs_info_msg_0_}%f %# '
 if [ -z "$SSH_TTY" ] ; then
     # PROMPT=$'\U1F5A5 \UFE0F %{$fg[cyan]%}%n%{$reset_color%}@%{$fg[red]%}%m %{$fg[white]%}%~ %{$reset_color%} %F{magenta}${vcs_info_msg_0_}%f %# '
-    PROMPT=$'%{$fg[cyan]%}%n%{$reset_color%}@%{$fg[red]%}%m %{$fg[white]%}%~ %{$reset_color%} %F{magenta}${vcs_info_msg_0_}%f %# '
+    PROMPT=$'%D{%L:%M:%S} %{$fg[cyan]%}%n%{$reset_color%}@%{$fg[red]%}%m %{$fg[white]%}%~ %{$reset_color%} %F{magenta}${vcs_info_msg_0_}%f\n%# '
 else
     # PROMPT=$'\U2601\UFE0F %{$fg[cyan]%}%n%{$reset_color%}@%{$fg[red]%}%m %{$fg[white]%}%~ %{$reset_color%} %F{magenta}${vcs_info_msg_0_}%f %# '
-    PROMPT=$'%{$fg[cyan]%}%n%{$reset_color%}@%{$fg[red]%}%m %{$fg[white]%}%~ %{$reset_color%} %F{magenta}${vcs_info_msg_0_}%f %# '
+    PROMPT=$'%D{%L:%M:%S} %{$fg[cyan]%}%n%{$reset_color%}@%{$fg[red]%}%m %{$fg[white]%}%~ %{$reset_color%} %F{magenta}${vcs_info_msg_0_}%f\n%# '
 fi
 
-RPS1='%D{%L:%M:%S}'
+RPS1=''
 
 
 ################################################################################
