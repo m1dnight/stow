@@ -45,7 +45,7 @@ if [[ -f "$HOME/.atuin/bin/env" ]]; then
 	# shellcheck source=/dev/null
 	. "$HOME/.atuin/bin/env"
 	eval "$(atuin init zsh)"
-	eval "$(atuin hex init)"
+	# eval "$(atuin hex init)"
 fi
 
 # This is useful if you're using opam as it adds:
