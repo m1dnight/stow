@@ -30,11 +30,24 @@ function pubip() {
 }
 
 # docker functions
+_d() {
+    local -a subcmds
+    subcmds=(
+        'ps:list all docker containers'
+        'rmall:force-remove all containers'
+        'vrmall:force-remove all volumes'
+        'lsv:list volumes with sizes'
+    )
+    _describe 'd subcommand' subcmds
+}
+compdef _d d
+
 function d() {
     case "$1" in
         ps) docker ps -a ;;
         rmall) docker ps -aq | xargs -n1 docker rm -f ;;
         vrmall) docker volume ls -q | xargs -n1 docker volume rm -f ;;
+        lsv) docker system df -v | awk '/^VOLUME NAME/{found=1; print "VOLUME\t\t\t\tSIZE"; next} found && /^$/{exit} found{printf "%-40s %s\n", $1, $NF}' ;;
         *) echo "Unknown command: d $1"; return 1 ;;
     esac
 }
