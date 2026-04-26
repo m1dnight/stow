@@ -37,6 +37,11 @@ defmodule Traverse do
       File.exists?(Path.join(path, ".Python"))
   end
 
+  defp esp_project?(path) do
+    File.dir?(path) and File.exists?(Path.join(path, "CMakeLists.txt")) and
+      File.exists?(Path.join(path, "sdkconfig"))
+  end
+
   defp remove(path, opts) do
     remove? = Keyword.fetch!(opts, :remove)
 
@@ -61,6 +66,9 @@ defmodule Traverse do
 
       node_project?(path) ->
         remove(Path.join(path, "node_modules"), opts)
+
+      esp_project?(path) ->
+        remove(Path.join(path, "build"), opts)
 
       virtual_env?(path) ->
         remove(path, opts)
