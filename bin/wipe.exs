@@ -42,6 +42,11 @@ defmodule Traverse do
       File.exists?(Path.join(path, "pubspec.yaml"))
   end
 
+  defp esp_project?(path) do
+    File.dir?(path) and File.exists?(Path.join(path, "CMakeLists.txt")) and
+      File.exists?(Path.join(path, "sdkconfig"))
+  end
+
   defp remove(path, opts) do
     remove? = Keyword.fetch!(opts, :remove)
 
@@ -71,6 +76,9 @@ defmodule Traverse do
       flutter_project?(path) ->
         remove(Path.join(path, "build"), opts)
         remove(Path.join(path, ".dart_tool"), opts)
+
+      esp_project?(path) ->
+        remove(Path.join(path, "build"), opts)
 
       virtual_env?(path) ->
         remove(path, opts)
