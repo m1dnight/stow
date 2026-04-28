@@ -59,3 +59,20 @@ function gh_cancel_queued() {
 function gh_cancel_in_progress() {
     gh run list --status in_progress --json databaseId --jq '.[].databaseId' | xargs -I {} gh run cancel {}
 }
+
+
+whoport() {
+  if [ -z "$1" ]; then
+    echo "Usage: whoport <port>"
+    return 1
+  fi
+
+  if [ "$(uname)" = "Darwin" ]; then
+    sudo lsof -nP -iTCP:"$1" -sTCP:LISTEN
+  elif [ "$(uname)" = "Linux" ]; then
+    sudo ss -ltnp "sport = :$1"
+  else
+    echo "Unsupported OS: $(uname)"
+    return 1
+  fi
+}
