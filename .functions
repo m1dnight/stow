@@ -103,3 +103,20 @@ function gh_cancel_in_progress() {
 
     echo "linked PR #${pr_number} → issue #${issue_number}"
   }
+
+
+whoport() {
+  if [ -z "$1" ]; then
+    echo "Usage: whoport <port>"
+    return 1
+  fi
+
+  if [ "$(uname)" = "Darwin" ]; then
+    sudo lsof -nP -iTCP:"$1" -sTCP:LISTEN
+  elif [ "$(uname)" = "Linux" ]; then
+    sudo ss -ltnp "sport = :$1"
+  else
+    echo "Unsupported OS: $(uname)"
+    return 1
+  fi
+}
