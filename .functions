@@ -59,3 +59,47 @@ function gh_cancel_queued() {
 function gh_cancel_in_progress() {
     gh run list --status in_progress --json databaseId --jq '.[].databaseId' | xargs -I {} gh run cancel {}
 }
+
+
+  gh() {
+    if [[ -t 0 && "$1" == "pr" && "$2" == "create" ]]; then
+      command gh "$@" || return $?
+
+      # gh pr view (no args) resolves the PR for the current branch.
+      local pr_number
+      pr_number=$(command gh pr view --json number --jq .number 2>/dev/null) || return 0
+      [[ -z "$pr_number" ]] && return 0
+
+      _gh_post_create_link "$pr_number"
+      return 0
+    fi
+
+    command gh "$@"
+  }
+  _gh_post_create_link() {
+    local pr_number=$1
+
+    printf 'tie this PR to an issue? [y/N] '
+    local confirm
+    read -r confirm
+    [[ "$confirm" =~ ^[Yy]$ ]] || return 0
+
+    command -v fzf >/dev/null || { echo "fzf not installed; skipping" >&2; return 0; }
+
+    local selected
+    selected=$(command gh issue list --state open --limit 200 \
+                --json number,title \
+                --jq '.[] | "#\(.number)\t\(.title)"' \
+              | fzf --prompt="link issue> " --height=40% --reverse)
+    [[ -z "$selected" ]] && return 0
+
+    local issue_number existing_body
+    issue_number=$(printf '%s' "$selected" | sed -E 's/^#([0-9]+).*/\1/')
+    existing_body=$(command gh pr view "$pr_number" --json body --jq .body)
+
+    command gh pr edit "$pr_number" --body "${existing_body}
+
+  Closes #${issue_number}"
+
+    echo "linked PR #${pr_number} → issue #${issue_number}"
+  }
