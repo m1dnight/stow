@@ -117,10 +117,3 @@ if ! shopt -oq posix; then
 fi
 
 [[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
-
-export PATH="$PATH:/home/christophe/.risc0/bin"
-
-. "$HOME/.atuin/bin/env"
-
-[[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
-eval "$(atuin init bash)"
