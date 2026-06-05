@@ -37,6 +37,11 @@ defmodule Traverse do
       File.exists?(Path.join(path, ".Python"))
   end
 
+  defp flutter_project?(path) do
+    File.dir?(path) and File.exists?(Path.join(path, "build")) and
+      File.exists?(Path.join(path, "pubspec.yaml"))
+  end
+
   defp remove(path, opts) do
     remove? = Keyword.fetch!(opts, :remove)
 
@@ -54,6 +59,7 @@ defmodule Traverse do
         # remove the deps folder
         remove(Path.join(path, "deps"), opts)
         remove(Path.join(path, "_build"), opts)
+        remove(Path.join(path, ".elixir_ls"), opts)
 
       rust_project?(path) ->
         # remove the deps folder
@@ -61,6 +67,10 @@ defmodule Traverse do
 
       node_project?(path) ->
         remove(Path.join(path, "node_modules"), opts)
+
+      flutter_project?(path) ->
+        remove(Path.join(path, "build"), opts)
+        remove(Path.join(path, ".dart_tool"), opts)
 
       virtual_env?(path) ->
         remove(path, opts)
