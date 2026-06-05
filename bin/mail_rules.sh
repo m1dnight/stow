@@ -25,6 +25,7 @@ for account in loomy gmail; do
         startswith("Je ontving gisteren een pakje van ons") or
         endswith("sent you a connection request") or
         startswith("Security alert") or
+        startswith("New messages from Alertmanager") or
         startswith("Documenten Maandelijkse mail documenten")
 
     )]' \
@@ -104,6 +105,7 @@ for account in loomy gmail; do
         .from.addr == "hello@tailscale.com" or
         .from.addr == "account-update@amazon.com.be" or
         .from.addr == "support@keychron.be" or
+        .from.addr == "info@vanpraet.be" or
         (.from.addr // "" | endswith("@maxevent.be")) or
         .from.addr == "venyu@mail.beehiiv.com"
       )
