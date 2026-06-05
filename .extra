@@ -43,8 +43,14 @@ fi
 # atuin
 if [[ -f "$HOME/.atuin/bin/env" ]]; then
 	# shellcheck source=/dev/null
+	# unset the session so each terminal gets a unique session ID
+	unset ATUIN_SESSION
 	. "$HOME/.atuin/bin/env"
-	eval "$(atuin init zsh)"
+	if [[ -n "$BASH_VERSION" ]]; then
+		eval "$(atuin init bash)"
+	else
+		eval "$(atuin init zsh)"
+	fi
 	# eval "$(atuin hex init)"
 fi
 
