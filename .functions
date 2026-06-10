@@ -105,6 +105,22 @@ function gh_cancel_in_progress() {
   }
 
 
+dotenv() {
+  command -v fzf >/dev/null || { echo "fzf not installed" >&2; return 1; }
+
+  local file
+  file=$(find . -maxdepth 1 -type f -name '.env*' | sed 's|^\./||' | sort \
+         | fzf --prompt="dotenv> " --height=40% --reverse --select-1 \
+               --preview 'cat {}')
+  [ -z "$file" ] && return 0
+
+  set -a
+  # shellcheck disable=SC1090
+  source "./$file"
+  set +a
+  echo "sourced $file"
+}
+
 whoport() {
   if [ -z "$1" ]; then
     echo "Usage: whoport <port>"
