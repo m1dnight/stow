@@ -75,3 +75,11 @@ fi
 if command -v kubectl &> /dev/null; then
     source <(kubectl completion zsh)
 fi
+
+
+if [[ -f "$HOME/.local/bin/mise" ]]; then
+	source "$HOME/.bun/_bun"
+	# bun
+	export BUN_INSTALL="$HOME/.bun"
+	export PATH="$BUN_INSTALL/bin:$PATH"
+fi
