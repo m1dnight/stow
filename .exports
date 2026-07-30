@@ -32,3 +32,14 @@ export CARGO_BUILD_BUILD_DIR=$HOME/.cache/cargo/target
 export HOMEBREW_GITHUB_API_TOKEN=$(cat $HOME/.secrets/brew_gh_token)
 # do not do autoupdate on brew
 export HOMEBREW_NO_AUTO_UPDATE=1
+
+
+# Set cache locations to external drive
+  if [[ $OSTYPE == darwin* ]] &&
+     mount | grep -qF ' on /Volumes/Storage ('; then
+      export CARGO_HOME=/Volumes/Storage/dev/cargo
+      export GOMODCACHE=/Volumes/Storage/dev/go/mod
+      export GRADLE_USER_HOME=/Volumes/Storage/dev/gradle
+      export PIP_CACHE_DIR=/Volumes/Storage/dev/pip
+      export HOMEBREW_CACHE=/Volumes/Storage/dev/homebrew
+  fi
