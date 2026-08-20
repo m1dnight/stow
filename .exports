@@ -34,12 +34,40 @@ export HOMEBREW_GITHUB_API_TOKEN=$(cat $HOME/.secrets/brew_gh_token)
 export HOMEBREW_NO_AUTO_UPDATE=1
 
 
-# Set cache locations to external drive
-  if [[ $OSTYPE == darwin* ]] &&
-     mount | grep -qF ' on /Volumes/Storage ('; then
-      export CARGO_HOME=/Volumes/Storage/dev/cargo
-      export GOMODCACHE=/Volumes/Storage/dev/go/mod
-      export GRADLE_USER_HOME=/Volumes/Storage/dev/gradle
-      export PIP_CACHE_DIR=/Volumes/Storage/dev/pip
-      export HOMEBREW_CACHE=/Volumes/Storage/dev/homebrew
-  fi
+# Remove external-drive settings inherited from an existing shell
+unset CARGO_HOME CARGO_TARGET_DIR CARGO_BUILD_BUILD_DIR
+unset GOMODCACHE GOCACHE
+unset GRADLE_USER_HOME
+unset PIP_CACHE_DIR UV_CACHE_DIR
+unset npm_config_cache PNPM_STORE_DIR
+unset HOMEBREW_CACHE HF_HOME
+
+storage_dev=/Volumes/Storage/dev
+maven_external_opt="-Dmaven.repo.local=$storage_dev/maven"
+
+# Prevent duplication when .zshrc is sourced repeatedly
+MAVEN_OPTS="${MAVEN_OPTS//$maven_external_opt/}"
+
+if [[ $OSTYPE == darwin* ]] &&
+   mount | grep -qF ' on /Volumes/Storage ('; then
+
+    export CARGO_HOME="$storage_dev/cargo"
+    export CARGO_TARGET_DIR="$storage_dev/cargo/target"
+
+    export GOMODCACHE="$storage_dev/go/mod"
+    export GOCACHE="$storage_dev/go/build"
+
+    export GRADLE_USER_HOME="$storage_dev/gradle"
+    export MAVEN_OPTS="${MAVEN_OPTS:+$MAVEN_OPTS }$maven_external_opt"
+
+    export PIP_CACHE_DIR="$storage_dev/pip"
+    export UV_CACHE_DIR="$storage_dev/uv"
+
+    export npm_config_cache="$storage_dev/npm"
+    export PNPM_STORE_DIR="$storage_dev/pnpm/store"
+
+    export HOMEBREW_CACHE="$storage_dev/homebrew"
+    export HF_HOME="$storage_dev/huggingface"
+fi
+
+unset storage_dev maven_external_opt
