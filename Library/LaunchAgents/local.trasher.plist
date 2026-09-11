@@ -6,10 +6,19 @@
                 <string>local.trasher</string>
                 <key>ProgramArguments</key>
                 <array>
-                        <string>/bin/sh</string>
-                        <string>-c</string>
                         <string>/Users/christophe/bin/trasher/take_out_trash.sh</string>
                 </array>
+
+                <key>EnvironmentVariables</key>
+                <dict>
+                        <key>HOME</key>
+                        <string>/Users/christophe</string>
+                        <key>PATH</key>
+                        <string>/usr/bin:/bin:/usr/sbin:/sbin</string>
+                </dict>
+
+                <key>RunAtLoad</key>
+                <true />
 
                 <!-- <key>StartCalendarInterval</key>
                 <dict>
@@ -20,10 +29,10 @@
                 <key>StartInterval</key>
                 <integer>60</integer>
                 <key>StandardErrorPath</key>
-                <string>/Users/christophe/bin/trasher/trasher.log</string>
+                <string>/Users/christophe/Library/Logs/local.trasher.err.log</string>
 
                 <key>StandardOutPath</key>
-                <string>/Users/christophe/bin/trasher/trasher.log</string>
+                <string>/Users/christophe/Library/Logs/local.trasher.out.log</string>
 
         </dict>
 </plist>

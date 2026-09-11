@@ -7,10 +7,16 @@
         <key>ProgramArguments</key>
 
         <array>
-            <string>/bin/zsh</string>
-            <string>-ilc</string>
-            <string>/opt/homebrew/bin/emacs --fg-daemon</string>
+            <string>/opt/homebrew/bin/emacs</string>
+            <string>--fg-daemon</string>
         </array>
+        <key>EnvironmentVariables</key>
+        <dict>
+            <key>HOME</key>
+            <string>/Users/christophe</string>
+            <key>PATH</key>
+            <string>/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+        </dict>
         <key>StandardErrorPath</key>
         <string>/tmp/local.job.err</string>
         <key>StandardOutPath</key>
