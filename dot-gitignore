@@ -42,3 +42,5 @@ terraform.rc
 
 *.log
 **/.claude/settings.local.json
+
+__pycache__/
