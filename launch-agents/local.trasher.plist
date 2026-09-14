@@ -3,7 +3,7 @@
 <plist version="1.0">
         <dict>
                 <key>Label</key>
-                <string>local.trasher</string>
+                <string>local.trasher.plist</string>
                 <key>ProgramArguments</key>
                 <array>
                         <string>/Users/christophe/bin/trasher/take_out_trash.sh</string>
@@ -28,11 +28,17 @@
 
                 <key>StartInterval</key>
                 <integer>60</integer>
+
                 <key>StandardErrorPath</key>
-                <string>/Users/christophe/Library/Logs/local.trasher.err.log</string>
+                <string>/tmp/local.job.log</string>
 
                 <key>StandardOutPath</key>
-                <string>/Users/christophe/Library/Logs/local.trasher.out.log</string>
+                <string>/tmp/local.job.log</string>
+
+                <!-- Run the service at load  -->
+                <key>RunAtLoad</key>
+                <true />
+
 
         </dict>
 </plist>
