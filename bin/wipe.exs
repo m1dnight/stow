@@ -34,7 +34,7 @@ defmodule Traverse do
 
   defp virtual_env?(path) do
     File.dir?(path) and File.exists?(Path.join(path, "pyvenv.cfg")) and
-      File.exists?(Path.join(path, ".Python"))
+      Path.basename(path) in [".venv", "venv"]
   end
 
   defp flutter_project?(path) do
